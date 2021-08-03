@@ -6,7 +6,7 @@ function agregarCovid(req, res) {
     var covidModel = new Covid();
 
     covidModel.nombre = 'COVID-19';
-    covidModel.contagiados = 100;
+    covidModel.contagiados = 0;
     covidModel.muertos = 0;
     covidModel.casosDetectados = 0;
     covidModel.recuperados = 0;
@@ -41,7 +41,7 @@ function editarCovid(req, res) {
 
 function listarCovid(req, res) {
 
-    Covid.find().exec((err, covid) => {
+    Covid.findOne({ nombre: 'COVID-19' }, (err, covid) => {
         if (err) return res.status(500).send({ mensaje: 'error en la peticion' });
         if (!covid) return res.status(500).send({ mensaje: 'no existe el covid' });
 
