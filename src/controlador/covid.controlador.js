@@ -41,7 +41,7 @@ function editarCovid(req, res) {
 
 function listarCovid(req, res) {
 
-    Covid.findOne({ nombre: 'COVID-19' }, (err, covid) => {
+    Covid.find({ nombre: 'COVID-19' }, (err, covid) => {
         if (err) return res.status(500).send({ mensaje: 'error en la peticion' });
         if (!covid) return res.status(500).send({ mensaje: 'no existe el covid' });
 
